@@ -29,7 +29,7 @@ public class ApplicationService {
 
         if (existingApplication != null) {
             // Update fields only if they are provided in the 'application' object
-            if (application.getApplicationId() != null && !application.getApplicationId().isEmpty()) {
+            if (application.getApplicationId() != null ) {
                 existingApplication.setApplicationId(application.getApplicationId());
             }
             if (application.getStatus() != null && !application.getStatus().isEmpty()) {

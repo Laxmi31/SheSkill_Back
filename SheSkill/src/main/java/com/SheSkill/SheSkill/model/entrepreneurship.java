@@ -14,5 +14,5 @@ public class entrepreneurship {
     private String description;
     private String type;
     private String link;
-    private String posted;
+    private String posted_by;
 }

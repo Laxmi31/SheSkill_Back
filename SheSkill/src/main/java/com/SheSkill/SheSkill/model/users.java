@@ -19,6 +19,7 @@ public class users {
     private String emailId;
     private String password;
     private String role;
+    private String name;
 
 }
 

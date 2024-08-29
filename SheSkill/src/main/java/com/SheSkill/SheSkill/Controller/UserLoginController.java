@@ -1,6 +1,7 @@
 package com.SheSkill.SheSkill.Controller;
 
 import com.SheSkill.SheSkill.Service.UserLoginService;
+import com.SheSkill.SheSkill.model.LoginResponse;
 import com.SheSkill.SheSkill.model.users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +21,7 @@ public class UserLoginController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody users user) {
+    public LoginResponse login(@RequestBody users user) {
 
         return service.verify(user);
     }

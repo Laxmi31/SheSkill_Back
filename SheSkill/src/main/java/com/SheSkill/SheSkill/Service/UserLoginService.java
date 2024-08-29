@@ -1,6 +1,7 @@
 package com.SheSkill.SheSkill.Service;
 
 import com.SheSkill.SheSkill.dao.UserLoginDao;
+import com.SheSkill.SheSkill.model.LoginResponse;
 import com.SheSkill.SheSkill.model.users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -31,12 +32,15 @@ public class UserLoginService {
         return user;
     }
 
-    public String verify(users user) {
+    public LoginResponse verify(users user) {
         Authentication authentication = authManager.authenticate(new UsernamePasswordAuthenticationToken(user.getEmailId(), user.getPassword()));
         if (authentication.isAuthenticated()) {
-            return jwtService.generateToken(user.getEmailId());
+            String token = jwtService.generateToken(user.getEmailId());
+            users authenticatedUser = repo.findByEmailId(user.getEmailId());
+            System.out.println(authenticatedUser.getEmailId());
+            return new LoginResponse(token, authenticatedUser.getEmailId(), authenticatedUser.getName());
         } else {
-            return "fail";
+            return null;
         }
     }
 }
