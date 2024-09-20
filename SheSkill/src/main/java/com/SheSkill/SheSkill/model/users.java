@@ -15,11 +15,15 @@ public class users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @JoinColumn(name="email_id")
+    private String name;
+    private String gender;
+    private Integer age;
+    @Column(name="mobile_number")
+    private String mobile;
+    @Column(name="email_id")
     private String emailId;
     private String password;
-    private String role;
-    private String name;
+
 
 }
 

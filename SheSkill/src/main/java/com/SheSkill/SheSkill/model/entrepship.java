@@ -5,14 +5,20 @@ import lombok.Data;
 
 @Data
 @Entity
-public class entrepreneurship {
+public class entrepship {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Integer rid;
+    @Column
     private String title;
+    @Column
     private String description;
+    @Column
     private String type;
+    @Column
     private String link;
-    private String posted_by;
+    @Column
+    private Integer posted_by;
 }

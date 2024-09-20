@@ -10,11 +10,11 @@ public class applications {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JoinColumn(name="application_id")
+    @Column(name="application_id")
     private Integer applicationId;
-    @JoinColumn(name="job_id")
+    @Column(name="job_id")
     private Integer jobId;
     private String status;
-    @JoinColumn(name="user_id")
-    private String userId;
+    @Column(name="user_id")
+    private Integer userId;
 }

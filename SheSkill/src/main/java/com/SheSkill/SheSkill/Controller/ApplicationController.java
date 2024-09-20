@@ -37,5 +37,13 @@ public class ApplicationController {
         return applicationService.deleteApplication(application);
     }
 
+    @GetMapping("getStatus")
+    public boolean getStatus(@RequestParam Integer jobId){
+        boolean result= applicationService.getStatus(jobId);
+        System.out.println(result);
+        return result;
+    }
+
+
 
 }

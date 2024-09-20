@@ -22,6 +22,16 @@ public class UserService {
         return "Inserted successfully";
     }
 
+    // Register a new user
+    public String registerUser(users user) {
+        users existingUser = userDao.findByEmailId(user.getEmailId());
+        if (existingUser != null) {
+            return "User already exists with this email.";
+        }
+        userDao.save(user);
+        return "User registered successfully";
+    }
+
     public String updateUser(users user) {
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String email = userDetails.getUsername();
@@ -31,12 +41,11 @@ public class UserService {
             if (user.getPassword() != null && !user.getPassword().isEmpty()) {
                 existingUser.setPassword(user.getPassword());
             }
-            if (user.getRole() != null && !user.getRole().isEmpty()) {
-                existingUser.setRole(user.getRole());
-            }
+
             if (user.getEmailId() != null && !user.getEmailId().isEmpty()) {
                 existingUser.setEmailId(user.getEmailId());
             }
+
 
         userDao.save(existingUser);
             return "Updated successfully";
